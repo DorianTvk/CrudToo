@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace MauiCRUDtoo
+namespace CrudToo
 {
     public static class MauiProgram
     {

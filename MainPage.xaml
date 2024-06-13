@@ -1,41 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CrudToo.MainPage">
+             x:Class="MauiCRUDtoo.MainPage"
+             Title="CRUD">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
-        </VerticalStackLayout>
-    </ScrollView>
+	<FlexLayout Direction="Column">
+		<VerticalStackLayout Padding="10" FlexLayout.Basis="Auto" BackgroundColor="AliceBlue">
+			<Entry x:Name="nameEntryField" Placeholder="Car Name" />
+			<Entry x:Name="emailEntryField" Placeholder="Year" />
+			<Entry x:Name="PhoneNumberEntryField" Placeholder="VINNumber" />
+			<Button x:Name="saveButton" Text="Save" Clicked="saveButton_Clicked" />
+		</VerticalStackLayout>
+		<ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listView_ItemTapped">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<VerticalStackLayout Padding="5">
+							<Label Text="{Binding Name}" FontSize="17" FontAttributes="Bold" />
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition Width="*" />
+									<ColumnDefinition Width="Auto" />
+								</Grid.ColumnDefinitions>
+								<Label Grid.Column="0" Text="{Binding Year}" />
+								<Label Grid.Column="2" Text="{Binding VINNumber}" FontAttributes="Bold" />
+							</Grid>
+						</VerticalStackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</FlexLayout>
 
 </ContentPage>
